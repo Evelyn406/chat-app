@@ -10,7 +10,7 @@ export const getUsersForSidebar = async (req, res) => {
         const filteredUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");
         res.status(200).json(filteredUsers);
         
-        // Below are the modifies code to only select users that are friends with currently logged in user
+        // Below are the modified code to only select users that are friends with currently logged in user
         // const allConversations = await Conversation.find({ participants: loggedInUserId })
         // .sort({ updatedAt: -1 }).populate("participants");
         // const allFriends = [];
