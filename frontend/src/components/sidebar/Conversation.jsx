@@ -22,7 +22,7 @@ const Conversation = (props) => {
                 <div className="flex gap-3 justify-between"> 
                 {/* here maybe remove the classname to remove the emoji and show the latest message? */}
                     <p className="font-bold text-gray-200">{conversation.username}</p>
-                    <span className="text-xl">🥑</span>
+                    {/* <span className="text-xl">🥑</span> */}
                 </div>
             </div>
         </div>

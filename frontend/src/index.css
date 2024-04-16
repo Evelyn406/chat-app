@@ -28,7 +28,3 @@ body{
 ::-webkit-scrollbar-thumb:hover{
   background: #242424;
 } */
-
-.overflow-auto {
-  padding-right: 10px; /* Adjust based on scrollbar width */
-}
