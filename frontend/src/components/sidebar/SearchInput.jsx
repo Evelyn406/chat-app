@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoSearchSharp } from "react-icons/io5";
+import useConversation from '../../zustand/useConversation.js';
+import useGetConversations from '../../hooks/useGetConversations.js';
+import toast from "react-hot-toast";
 
 const SearchInput = () => {
+    const [search, setSearch] = useState("");
+    const { setSelectedConversation } = useConversation();
+    const { conversations } = useGetConversations();
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!search) return;
+        if (search.length < 3) {
+            return toast.error("Search term must be at least 3 characters long");
+        }
+        console.log(conversations);
+        const conversation = conversations.find(
+            (c) => c.username.toLowerCase().includes(search.toLowerCase())
+        );
+        if (conversation) {
+            setSelectedConversation(conversation);
+            setSearch("");
+        } else {
+            toast.error("No user found.");
+            setSearch("");
+        }
+    }
   return (
     <div>
-        <form className="flex items-center gap-2">
+        <form onSubmit={handleSubmit} className="flex items-center gap-2">
             {/* <input type="text" placeholder="Search..." className="input input-bordered rounded-full" /> */}
             <label className="input input-bordered rounded-full flex items-center gap-2">
-                <input type="text" className="grow" placeholder="Search..." />
+                <input type="text" className="grow" placeholder="Search..." value={search} 
+                onChange={(e) => setSearch(e.target.value)}/>
             </label>
             <button type="submit" className="btn btn-circle bg-sky-500 text-white btn-outline">
                 {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70">

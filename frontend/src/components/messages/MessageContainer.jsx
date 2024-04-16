@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import { TiMessage } from "react-icons/ti";
 import useConversation from '../../zustand/useConversation.js';
 
 const MessageContainer = () => {
-  const {selectedConversation} = useConversation();
+  const {selectedConversation, setSelectedConversation} = useConversation();
+
+  useEffect(() => {
+    // cleanup function, unmounts component
+    return () => setSelectedConversation(null);
+  }, [setSelectedConversation]);
+
   return (
     <div className="md:min-w-[450px] flex flex-col">
       {!selectedConversation ? <NoChatSelected /> : (

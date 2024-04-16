@@ -10,11 +10,10 @@ body{
   background-attachment: fixed;
 }
 
-
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   cursor: pointer;
   width: 6px;
-} */
+}
 
 /* ::-webkit-scrollbar-track {
   cursor: pointer;
@@ -22,7 +21,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #121212;
+  background: #2a2a2a;
   border-radius: 5px;
 }
 

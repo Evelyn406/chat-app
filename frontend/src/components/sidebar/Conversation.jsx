@@ -4,6 +4,7 @@ import useConversation from '../../zustand/useConversation.js';
 const Conversation = (props) => {
     const conversation = props.conversation;
     //console.log(conversation);
+    //console.log(conversation._id);
     const {selectedConversation, setSelectedConversation} = useConversation();
     const isSelected = (selectedConversation?._id === conversation._id);
   return <>
